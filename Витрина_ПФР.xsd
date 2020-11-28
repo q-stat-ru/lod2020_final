@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema 
+   elementFormDefault="qualified"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="Database">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="AllIdentityDocumentType">
+               <xs:complexType>
+                  <xs:attribute name="IDAllIdentityDocumentType" type="xs:long" use="required">
+                  </xs:attribute>
+                  <xs:attribute name="DocumentType" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="DocumentCode" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="PhysicalPersonQualifiedName">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="personnel measures">
+                        <xs:complexType>
+                           <xs:attribute name="IDEmploymentInformation" type="xs:long" use="required">
+                           </xs:attribute>
+                           <xs:attribute name="IDPhysicalPersonQualifiedName" type="xs:long">
+                           </xs:attribute>
+                           <xs:attribute name="FamilyName" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="FirstName" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="Patronymic" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="DateBirth" type="xs:date">
+                           </xs:attribute>
+                           <xs:attribute name="BirthDatespecial_day" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="BirthDatespecial_Month" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="BirthDatespecial_Yaer" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="SNILS" type="integer (11)">
+                           </xs:attribute>
+                           <xs:attribute name="RegistrationNumber" type="integer (12)">
+                           </xs:attribute>
+                           <xs:attribute name="FNameOrgan" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="INN" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="KPP" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="DateOfEvent" type="xs:date">
+                           </xs:attribute>
+                           <xs:attribute name="TypeOfEvent" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="Position" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="TypeWork" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="StructuralDivision" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="CodeOfFunction" type="integer (50)">
+                           </xs:attribute>
+                           <xs:attribute name="ReasonDismissal" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="Article" type="integer (10)">
+                           </xs:attribute>
+                           <xs:attribute name="Paragraph" type="integer (10)">
+                           </xs:attribute>
+                           <xs:attribute name="DocumentDismissal" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="DateCancellation" type="xs:date">
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="WaysWorkRecord">
+                        <xs:complexType>
+                           <xs:attribute name="IDPhysicalPersonQualifiedName" type="xs:long">
+                           </xs:attribute>
+                           <xs:attribute name="ID способы ведения трудовой книжки" type="xs:long" use="required">
+                           </xs:attribute>
+                           <xs:attribute name="Фамилия" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="Имя" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="Отчество" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="Дата рождения" type="xs:date">
+                           </xs:attribute>
+                           <xs:attribute name="Дата рождения особая_день" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="Дата рождения особая_месяц" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="Дата рождения особая_год" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="СНИЛС" type="integer (11)">
+                           </xs:attribute>
+                           <xs:attribute name="DateOfApplication" type="xs:date">
+                           </xs:attribute>
+                           <xs:attribute name="Application_type" type="xs:short">
+                           </xs:attribute>
+                           <xs:attribute name="Application_form" type="xs:short">
+                           </xs:attribute>
+                           <xs:attribute name="Waysworkrecord_ID_ref" type="xs:long" use="required">
+                           </xs:attribute>
+                           <xs:attribute name="ts_end" type="xs:date">
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>   
+                  <xs:attribute name="IDPhysicalPersonQualifiedName" type="xs:long" use="required">
+                  </xs:attribute>
+                  <xs:attribute name="numSNILS" type="integer (11)">
+                  </xs:attribute>
+                  <xs:attribute name="BirthDate" type="xs:date">
+                  </xs:attribute>
+                  <xs:attribute name="GenderType" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="PreRetire_FNS_Status" type="xs:short">
+                  </xs:attribute>
+                  <xs:attribute name="PreRetire_SZ_Status" type="xs:short">
+                  </xs:attribute>
+                  <xs:attribute name="PreRetire_R_Status" type="xs:short">
+                  </xs:attribute>
+                  <xs:attribute name="PreRetire_FNS_StatusDate" type="xs:date">
+                  </xs:attribute>
+                  <xs:attribute name="PreRetire_SZ_StatusDate" type="xs:date">
+                  </xs:attribute>
+                  <xs:attribute name="PreRetire_R_StatusDate" type="xs:date">
+                  </xs:attribute>
+                  <xs:attribute name="DateStatus" type="xs:date">
+                  </xs:attribute>
+                  <xs:attribute name="BirthDatespecial_day" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="BirthDatespecial_Month" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="BirthDatespecial_Yaer" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="FamilyName" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="FirstName2" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="Patronymic" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="Settlement" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="District" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="Region" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="Country" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="StatusSNILS" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="Registration_num" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="IdentityDocument">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="IssueDate" type="xs:date"/>
+                     <xs:element name="DOC_Number">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                             <xs:pattern value="\d{6}"/>
+                          </xs:restriction>
+                        </xs:simpleType>
+                     </xs:element>
+                     <xs:element name="Series_RUS">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                             <xs:pattern value="\d{4}"/>
+                          </xs:restriction>
+                        </xs:simpleType>
+                     </xs:element>
+                     <xs:element name="Issuer">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                             <xs:pattern value="[Р°-СЏРђ-РЇС‘РЃ\-0-9][Р°-СЏРђ-РЇС‘РЃ\-\s&#39;&#39;,.0-9]*"/>
+                          </xs:restriction>
+                        </xs:simpleType>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="IDIdentityDocument" type="xs:long" use="required">
+                  </xs:attribute>
+                  <xs:attribute name="IDAllIdentityDocumentType" type="xs:long">
+                  </xs:attribute>
+                  <xs:attribute name="IDPhysicalPersonQualifiedName" type="xs:long">
+                  </xs:attribute>
+                  <xs:attribute name="Series_ROM" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>   
+      </xs:complexType>
+      <xs:key name="Key_2">
+         <xs:selector xpath="AllIdentityDocumentType"/>
+         <xs:field xpath="@IDAllIdentityDocumentType"/>
+      </xs:key>
+      <xs:key name="Key_3">
+         <xs:selector xpath="PhysicalPersonQualifiedName"/>
+         <xs:field xpath="@IDPhysicalPersonQualifiedName"/>
+      </xs:key>
+      <xs:key name="Key_4">
+         <xs:selector xpath="PhysicalPersonQualifiedName/personnel measures"/>
+         <xs:field xpath="@IDEmploymentInformation"/>
+      </xs:key>
+      <xs:key name="Key_5">
+         <xs:selector xpath="PhysicalPersonQualifiedName/WaysWorkRecord"/>
+         <xs:field xpath="@ID способы ведения трудовой книжки"/>
+         <xs:field xpath="@Waysworkrecord_ID_ref"/>
+      </xs:key>
+      <xs:key name="Key_1">
+         <xs:selector xpath="IdentityDocument"/>
+         <xs:field xpath="@IDIdentityDocument"/>
+      </xs:key>
+      <xs:keyref name="Reference_8" refer="Key_2">
+         <xs:selector xpath="IdentityDocument"/>
+         <xs:field xpath="@IDAllIdentityDocumentType"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_7" refer="Key_3">
+         <xs:selector xpath="IdentityDocument"/>
+         <xs:field xpath="@IDPhysicalPersonQualifiedName"/>
+      </xs:keyref>
+   </xs:element>
+   <xs:simpleType name="rus-and-num-200">
+     <xs:restriction base="xs:string">
+        <xs:length value="200"/>
+        <xs:pattern value="[Р°-СЏРђ-РЇС‘РЃ\-0-9][Р°-СЏРђ-РЇС‘РЃ\-\s&#39;&#39;,.0-9]*"/>
+     </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="digits-6">
+     <xs:restriction base="xs:string">
+        <xs:length value="6"/>
+        <xs:pattern value="\d{6}"/>
+     </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="digits-4">
+     <xs:restriction base="xs:string">
+        <xs:length value="4"/>
+        <xs:pattern value="\d{4}"/>
+     </xs:restriction>
+   </xs:simpleType>
+</xs:schema>
