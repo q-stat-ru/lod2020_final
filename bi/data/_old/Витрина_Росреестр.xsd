@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="Database">
+      <xs:complexType>
+         <xs:sequence>
+            <!--
+            Таблица физических лиц
+            -->
+            <xs:element name="Individual">
+               <xs:complexType>
+                  <xs:attribute name="IndividualID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="LastName" type="xs:string"> </xs:attribute>
+                  <xs:attribute name="FName" type="xs:string"> </xs:attribute>
+                  <xs:attribute name="Patronymic" type="xs:string"> </xs:attribute>
+                  <xs:attribute name="SNILS" type="xs:string"> </xs:attribute>
+                  <xs:attribute name="DateBirth" type="xs:date"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Типы юридических лиц, включая ОИВ
+            -->
+            <xs:element name="EntityType">
+               <xs:complexType>
+                  <xs:sequence>
+                     <!--
+                     Таблица юридических лиц
+                     -->
+                     <xs:element name="Entity">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <!--
+                              Таблица дополнительных параметров, учитываемых для иностранных ЮЛ
+                              -->
+                              <xs:element name="MoreCharNotResident">
+                                 <xs:complexType>
+                                    <xs:attribute name="MoreCharNotResidentID" type="xs:long"
+                                       use="required"> </xs:attribute>
+                                    <xs:attribute name="EntityID" type="xs:long"> </xs:attribute>
+                                    <xs:attribute name="IncCountryValue" type="xs:string"> </xs:attribute>
+                                    <xs:attribute name="IncCountryCode" type="xs:string"> </xs:attribute>
+                                    <xs:attribute name="RegistrationNum" type="xs:string"> </xs:attribute>
+                                    <xs:attribute name="DateStateReg" type="xs:date">
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="EntityID" type="xs:long" use="required"> </xs:attribute>
+                           <xs:attribute name="EntityType" type="xs:long"> </xs:attribute>
+                           <xs:attribute name="EntityName" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="INN" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="KPP" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="OGRN" type="xs:string"> </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="EntityTypeID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="EntityType" type="xs:string"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Определяет коды (по сути типы) документа
+            -->
+            <xs:element name="DocumentCode">
+               <xs:complexType>
+                  <xs:sequence>
+                     <!--
+                     Таблица документов - оснований для регистрации прав
+                     -->
+                     <xs:element name="Document">
+                        <xs:complexType>
+                           <xs:attribute name="DocumentID" type="xs:long" use="required"> </xs:attribute>
+                           <xs:attribute name="DocumentCodeID" type="xs:long"> </xs:attribute>
+                           <xs:attribute name="DocumentName" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="DocumentSer" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="DocumentNum" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="DocumentDate" type="xs:date"> </xs:attribute>
+                           <xs:attribute name="DocumentAuthority" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="SubdivisionCode" type="xs:string"> </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="DocumentCodeID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="DocumentCodeName" type="xs:string"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Справочник видов прав
+            -->
+            <xs:element name="RightType">
+               <xs:complexType>
+                  <xs:attribute name="RightTypeID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="Name" type="xs:string"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Справочник прав с характеристикаи
+            -->
+            <xs:element name="ObjectRight">
+               <xs:complexType>
+                  <xs:sequence>
+                     <!--
+                     Таблица регистраций записей о формирования права на ОН
+                     -->
+                     <xs:element name="RightRecord">
+                        <xs:complexType>
+                           <xs:attribute name="RightRecordID" type="xs:long" use="required"> </xs:attribute>
+                           <xs:attribute name="RecordNum" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="SectionNum" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="RegistrationDate" type="xs:date"> </xs:attribute>
+                           <xs:attribute name="CancelDate" type="xs:date"> </xs:attribute>
+                           <xs:attribute name="ObjectRightID" type="xs:long"> </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="ObjectRightID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="RightTypeID" type="xs:long"> </xs:attribute>
+                  <xs:attribute name="RightNum" type="xs:string"> </xs:attribute>
+                  <xs:attribute name="RegistrationDate" type="xs:date"> </xs:attribute>
+                  <xs:attribute name="CancelDate" type="xs:date"> </xs:attribute>
+                  <xs:attribute name="SectionNum" type="xs:string"> </xs:attribute>
+                  <xs:attribute name="RoomOwnersShareInfo" type="xs:string"> </xs:attribute>
+                  <xs:attribute name="ShareUnknown" type="xs:string"> </xs:attribute>
+                  <xs:attribute name="Numerator" type="xs:string"> </xs:attribute>
+                  <xs:attribute name="Denominator" type="xs:string"> </xs:attribute>
+                  <xs:attribute name="ShareDescription" type="xs:string"> </xs:attribute>
+                  <xs:attribute name="RegistrationTDate" type="xs:string"> </xs:attribute>
+                  <xs:attribute name="CancelTDate" type="xs:string"> </xs:attribute>
+                  <xs:attribute name="DocumentID" type="xs:long"> </xs:attribute>
+                  <xs:attribute name="PropertyObjectID" type="xs:long"> </xs:attribute>
+                  <xs:attribute name="HolderID" type="xs:long"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Справочник видов объектов недвижимости
+            -->
+            <xs:element name="ObjectType">
+               <xs:complexType>
+                  <xs:attribute name="ObjectTypeID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="Name" type="xs:string"> </xs:attribute>
+                  <xs:attribute name="ObjectTypeCode" type="xs:string"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Основная таблица объектов недвижимости
+            -->
+            <xs:element name="PropertyObject">
+               <xs:complexType>
+                  <xs:attribute name="ObjectID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="TypeObjectID" type="xs:long"> </xs:attribute>
+                  <xs:attribute name="Registry" type="xs:string"> </xs:attribute>
+                  <xs:attribute name="Cost" type="xs:decimal"> </xs:attribute>
+                  <xs:attribute name="AdressLocationID" type="xs:long"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Справочник единиц измерения
+            -->
+            <xs:element name="Unit">
+               <xs:complexType>
+                  <xs:sequence>
+                     <!--
+                     Справочник дополнительных характеристик объектов недвижимости, характеризиующие некоторые типы (виды) объектов недвижимости.
+                     -->
+                     <xs:element name="MoreObjectChar">
+                        <xs:complexType>
+                           <xs:attribute name="MoreObjectCharID" type="xs:long" use="required"> </xs:attribute>
+                           <xs:attribute name="Name" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="UnitID" type="xs:long"> </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="UnitID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="Name" type="xs:string"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Таблица, в которой сохраняются дополнительные характеристики объектов недвижимости, имеющие числовое (число с плавающей точкой) значение
+            -->
+            <xs:element name="NumObjectChar">
+               <xs:complexType>
+                  <xs:attribute name="NumObjectCharID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="ObjectID" type="xs:long"> </xs:attribute>
+                  <xs:attribute name="NumCharID" type="xs:long"> </xs:attribute>
+                  <xs:attribute name="Value" type="xs:decimal"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Таблица, в которой сохраняются дополнительные характеристики объектов недвижимости, имеющие текстовое значение
+            -->
+            <xs:element name="TextObjectChar">
+               <xs:complexType>
+                  <xs:attribute name="TextObjectCharID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="ObjectID" type="xs:long"> </xs:attribute>
+                  <xs:attribute name="TextCharID" type="xs:long"> </xs:attribute>
+                  <xs:attribute name="Value" type="xs:string"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Справочник кодов регионов
+            -->
+            <xs:element name="Region">
+               <xs:complexType>
+                  <xs:sequence>
+                     <!--
+                     Таблица хранения используемых адресов (по справочнику ФИАС)
+                     -->
+                     <xs:element name="AddressFIAS">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <!--
+                              Таблица храннеия адресов, содержащий ссылку на справочник ФИАС и расширяющие его дополнительными полями
+                              -->
+                              <xs:element name="Address">
+                                 <xs:complexType>
+                                    <xs:attribute name="AdressID" type="xs:long" use="required"> </xs:attribute>
+                                    <xs:attribute name="FIASID" type="xs:long"> </xs:attribute>
+                                    <xs:attribute name="Note" type="xs:string"> </xs:attribute>
+                                    <xs:attribute name="ReadableAddress" type="xs:string">
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="AddressFIASID" type="xs:long" use="required"> </xs:attribute>
+                           <xs:attribute name="FIAS" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="OKATO" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="KLADR" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="OKTMO" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="PostalCode" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="RegionID" type="xs:long"> </xs:attribute>
+                           <xs:attribute name="District" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="City" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="UrbanDistrict" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="SovietVillage" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="Locality" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="Street" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="Level1" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="Level2" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="Level3" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="Apartment" type="xs:string"> </xs:attribute>
+                           <xs:attribute name="DetailedLevel" type="xs:string"> </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="RegionID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="RegionCode" type="xs:string"> </xs:attribute>
+                  <xs:attribute name="RegionValue" type="xs:string"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Справочник типов местоположений
+            -->
+            <xs:element name="LocationType">
+               <xs:complexType>
+                  <xs:sequence>
+                     <!--
+                     Справочник исползуемых местоположений с указанием их типа
+                     -->
+                     <xs:element name="Location">
+                        <xs:complexType>
+                           <xs:attribute name="LocationID" type="xs:long" use="required"> </xs:attribute>
+                           <xs:attribute name="LocationTypeID" type="xs:long"> </xs:attribute>
+                           <xs:attribute name="Text" type="xs:string"> </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="LocationTypeID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="LocationType" type="xs:string"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Справочник свойств местоположений
+            -->
+            <xs:element name="Properties">
+               <xs:complexType>
+                  <xs:attribute name="PropertiesID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="Name" type="xs:string"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Таблица, в которой фикстируются значения свойств (из справочника свойств) различных местоположений (из справочника местоположений)
+            -->
+            <xs:element name="LocationProp">
+               <xs:complexType>
+                  <xs:attribute name="LocationPropID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="LocationID" type="xs:long"> </xs:attribute>
+                  <xs:attribute name="PropertiesID" type="xs:long"> </xs:attribute>
+                  <xs:attribute name="Volume" type="xs:string"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Справочник типов адресов
+            -->
+            <xs:element name="AddressType">
+               <xs:complexType>
+                  <xs:attribute name="AddressTypeID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="AddressType" type="xs:string"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Таблица, агрегирующая тип адреса, сам адрес и местоположение
+            -->
+            <xs:element name="AdressLocation">
+               <xs:complexType>
+                  <xs:attribute name="AdressLocationID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="TypeAdressID" type="xs:long"> </xs:attribute>
+                  <xs:attribute name="AdressID" type="xs:long"> </xs:attribute>
+                  <xs:attribute name="LocationID" type="xs:long"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Справочник типов правообладателя.
+            -->
+            <xs:element name="HolderType">
+               <xs:complexType>
+                  <xs:attribute name="HolderTypeID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="HolderType" type="xs:string"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <!--
+            Сводная таблица правообладателей, сводящая как физических, так и юридических лиц
+            -->
+            <xs:element name="Holder">
+               <xs:complexType>
+                  <xs:attribute name="HolderID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="TypeHolderID" type="xs:long"> </xs:attribute>
+                  <xs:attribute name="PersonID" type="xs:long"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="DataObjectChar">
+               <xs:complexType>
+                  <xs:attribute name="DataObjectCharID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="MoreObjectCharID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="ObjectID" type="xs:long"> </xs:attribute>
+                  <xs:attribute name="Value" type="xs:date"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="IntObjectChar">
+               <xs:complexType>
+                  <xs:attribute name="IntObjectCharID" type="xs:long" use="required"> </xs:attribute>
+                  <xs:attribute name="ObjectID" type="xs:long"> </xs:attribute>
+                  <xs:attribute name="MoreObjectCharID" type="xs:long"> </xs:attribute>
+                  <xs:attribute name="Value" type="xs:long"> </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+      <xs:key name="Key_2">
+         <xs:selector xpath="Individual"/>
+         <xs:field xpath="@IndividualID"/>
+      </xs:key>
+      <xs:key name="Key_3">
+         <xs:selector xpath="EntityType"/>
+         <xs:field xpath="@EntityTypeID"/>
+      </xs:key>
+      <xs:key name="Key_4">
+         <xs:selector xpath="EntityType/Entity"/>
+         <xs:field xpath="@EntityID"/>
+      </xs:key>
+      <xs:key name="Key_5">
+         <xs:selector xpath="EntityType/Entity/MoreCharNotResident"/>
+         <xs:field xpath="@MoreCharNotResidentID"/>
+      </xs:key>
+      <xs:key name="Key_6">
+         <xs:selector xpath="DocumentCode"/>
+         <xs:field xpath="@DocumentCodeID"/>
+      </xs:key>
+      <xs:key name="Key_7">
+         <xs:selector xpath="DocumentCode/Document"/>
+         <xs:field xpath="@DocumentID"/>
+      </xs:key>
+      <xs:key name="Key_8">
+         <xs:selector xpath="RightType"/>
+         <xs:field xpath="@RightTypeID"/>
+      </xs:key>
+      <xs:key name="Key_9">
+         <xs:selector xpath="ObjectRight"/>
+         <xs:field xpath="@ObjectRightID"/>
+      </xs:key>
+      <xs:key name="Key_10">
+         <xs:selector xpath="ObjectRight/RightRecord"/>
+         <xs:field xpath="@RightRecordID"/>
+      </xs:key>
+      <xs:key name="Key_11">
+         <xs:selector xpath="ObjectType"/>
+         <xs:field xpath="@ObjectTypeID"/>
+      </xs:key>
+      <xs:key name="Key_12">
+         <xs:selector xpath="PropertyObject"/>
+         <xs:field xpath="@ObjectID"/>
+      </xs:key>
+      <xs:key name="Key_13">
+         <xs:selector xpath="Unit"/>
+         <xs:field xpath="@UnitID"/>
+      </xs:key>
+      <xs:key name="Key_14">
+         <xs:selector xpath="Unit/MoreObjectChar"/>
+         <xs:field xpath="@MoreObjectCharID"/>
+      </xs:key>
+      <xs:key name="Key_15">
+         <xs:selector xpath="NumObjectChar"/>
+         <xs:field xpath="@NumObjectCharID"/>
+      </xs:key>
+      <xs:key name="Key_16">
+         <xs:selector xpath="TextObjectChar"/>
+         <xs:field xpath="@TextObjectCharID"/>
+      </xs:key>
+      <xs:key name="Key_17">
+         <xs:selector xpath="Region"/>
+         <xs:field xpath="@RegionID"/>
+      </xs:key>
+      <xs:key name="Key_18">
+         <xs:selector xpath="Region/AddressFIAS"/>
+         <xs:field xpath="@AddressFIASID"/>
+      </xs:key>
+      <xs:key name="Key_19">
+         <xs:selector xpath="Region/AddressFIAS/Address"/>
+         <xs:field xpath="@AdressID"/>
+      </xs:key>
+      <xs:key name="Key_20">
+         <xs:selector xpath="LocationType"/>
+         <xs:field xpath="@LocationTypeID"/>
+      </xs:key>
+      <xs:key name="Key_21">
+         <xs:selector xpath="LocationType/Location"/>
+         <xs:field xpath="@LocationID"/>
+      </xs:key>
+      <xs:key name="Key_22">
+         <xs:selector xpath="Properties"/>
+         <xs:field xpath="@PropertiesID"/>
+      </xs:key>
+      <xs:key name="Key_23">
+         <xs:selector xpath="LocationProp"/>
+         <xs:field xpath="@LocationPropID"/>
+      </xs:key>
+      <xs:key name="Key_24">
+         <xs:selector xpath="AddressType"/>
+         <xs:field xpath="@AddressTypeID"/>
+      </xs:key>
+      <xs:key name="Key_25">
+         <xs:selector xpath="AdressLocation"/>
+         <xs:field xpath="@AdressLocationID"/>
+      </xs:key>
+      <xs:key name="Key_26">
+         <xs:selector xpath="HolderType"/>
+         <xs:field xpath="@HolderTypeID"/>
+      </xs:key>
+      <xs:key name="Key_27">
+         <xs:selector xpath="Holder"/>
+         <xs:field xpath="@HolderID"/>
+      </xs:key>
+      <xs:key name="Key_28">
+         <xs:selector xpath="DataObjectChar"/>
+         <xs:field xpath="@DataObjectCharID"/>
+      </xs:key>
+      <xs:key name="Key_1">
+         <xs:selector xpath="IntObjectChar"/>
+         <xs:field xpath="@IntObjectCharID"/>
+      </xs:key>
+      <xs:keyref name="Reference_4" refer="Key_8">
+         <xs:selector xpath="ObjectRight"/>
+         <xs:field xpath="@RightTypeID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_5" refer="Key_11">
+         <xs:selector xpath="PropertyObject"/>
+         <xs:field xpath="@TypeObjectID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_7" refer="Key_12">
+         <xs:selector xpath="NumObjectChar"/>
+         <xs:field xpath="@ObjectID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_8" refer="Key_14">
+         <xs:selector xpath="NumObjectChar"/>
+         <xs:field xpath="@NumCharID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_9" refer="Key_14">
+         <xs:selector xpath="TextObjectChar"/>
+         <xs:field xpath="@TextCharID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_10" refer="Key_12">
+         <xs:selector xpath="TextObjectChar"/>
+         <xs:field xpath="@ObjectID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_16" refer="Key_24">
+         <xs:selector xpath="AdressLocation"/>
+         <xs:field xpath="@TypeAdressID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_17" refer="Key_19">
+         <xs:selector xpath="AdressLocation"/>
+         <xs:field xpath="@AdressID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_18" refer="Key_21">
+         <xs:selector xpath="AdressLocation"/>
+         <xs:field xpath="@LocationID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_19" refer="Key_2">
+         <xs:selector xpath="Holder"/>
+         <xs:field xpath="@PersonID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_20" refer="Key_26">
+         <xs:selector xpath="Holder"/>
+         <xs:field xpath="@TypeHolderID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_21" refer="Key_4">
+         <xs:selector xpath="Holder"/>
+         <xs:field xpath="@PersonID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_27" refer="Key_25">
+         <xs:selector xpath="PropertyObject"/>
+         <xs:field xpath="@AdressLocationID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_23" refer="Key_12">
+         <xs:selector xpath="ObjectRight"/>
+         <xs:field xpath="@PropertyObjectID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_24" refer="Key_7">
+         <xs:selector xpath="ObjectRight"/>
+         <xs:field xpath="@DocumentID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_25" refer="Key_27">
+         <xs:selector xpath="ObjectRight"/>
+         <xs:field xpath="@HolderID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_28" refer="Key_14">
+         <xs:selector xpath="DataObjectChar"/>
+         <xs:field xpath="@MoreObjectCharID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_29" refer="Key_12">
+         <xs:selector xpath="DataObjectChar"/>
+         <xs:field xpath="@ObjectID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_30" refer="Key_12">
+         <xs:selector xpath="IntObjectChar"/>
+         <xs:field xpath="@ObjectID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_31" refer="Key_14">
+         <xs:selector xpath="IntObjectChar"/>
+         <xs:field xpath="@MoreObjectCharID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_33" refer="Key_21">
+         <xs:selector xpath="LocationProp"/>
+         <xs:field xpath="@LocationID"/>
+      </xs:keyref>
+      <xs:keyref name="Reference_32" refer="Key_22">
+         <xs:selector xpath="LocationProp"/>
+         <xs:field xpath="@PropertiesID"/>
+      </xs:keyref>
+   </xs:element>
+</xs:schema>
